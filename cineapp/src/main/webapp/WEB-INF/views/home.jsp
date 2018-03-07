@@ -6,12 +6,16 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Bienvenido a cineapp</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <spring:url value="/resources" var="urlPublic"></spring:url>
     </head>
     <body>
         <%--
@@ -45,9 +49,20 @@
                                 <td>${ pelicula.duracion } min.</td>
                                 <td>${ pelicula.clasificacion }</td>
                                 <td>${ pelicula.genero }</td>
-                                <td>${ pelicula.imagen }</td>
-                                <td>${ pelicula.fechaEstreno }</td>
-                                <td>${ pelicula.estatus }</td>
+                                <td>${urlPublic}/images/${pelicula.imagen}</td>
+                                <td><fmt:formatDate value="${pelicula.fechaEstreno}" pattern="dd/MM/yyyy"/></td>
+                                <td>
+                                    
+                                    <c:choose>
+                                        <c:when test="${ pelicula.estatus == 'Activa'}">
+                                            <span class="badge badge-success">ACTIVA</span>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <span class="badge badge-danger">INACTIVA</span>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    
+                                </td>
                             </tr>
                         </c:forEach>
                     </tbody>

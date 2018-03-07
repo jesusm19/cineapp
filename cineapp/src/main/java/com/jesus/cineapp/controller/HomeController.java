@@ -65,6 +65,7 @@ public class HomeController {
             p1.setClasificacion("B");
             p1.setGenero("Aventura");
             p1.setFechaEstreno(formatter.parse("20-05-2017"));
+            p1.setImagen("power.png");
             
             Pelicula p2 = new Pelicula();
             p2.setId(2);
@@ -73,6 +74,7 @@ public class HomeController {
             p2.setClasificacion("A");
             p2.setGenero("Infantil");
             p2.setFechaEstreno(formatter.parse("20-05-2017"));
+            p2.setImagen("bella.jpg");
             
             Pelicula p3 = new Pelicula();
             p3.setId(3);
@@ -82,9 +84,20 @@ public class HomeController {
             p3.setGenero("Thriller");
             p3.setFechaEstreno(formatter.parse("20-05-2017"));
             
+            Pelicula p4 = new Pelicula();
+            p4.setId(4);
+            p4.setTitulo("La forma del agua");
+            p4.setDuracion(136);
+            p4.setClasificacion("B");
+            p4.setGenero("Acción");
+            p4.setFechaEstreno(formatter.parse("20-05-2017"));
+            p4.setImagen("forma.jpg");
+            p4.setEstatus("Inactiva");
+            
             list.add(p1);
             list.add(p2);
             list.add(p3);
+            list.add(p4);
             
             return list;
         } catch (ParseException e) {
