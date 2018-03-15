@@ -6,10 +6,14 @@
 package com.jesus.cineapp.controller;
 
 import com.jesus.cineapp.model.Pelicula;
+import com.jesus.cineapp.pojos.Peliculas;
+import com.jesus.cineapp.service.PeliculasService;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +26,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
     
+    @Autowired
+    private PeliculasService peliculasService;
+    
     @RequestMapping(value="/home", method=RequestMethod.GET)
     public String goHome(){
         return "home";
@@ -30,9 +37,8 @@ public class HomeController {
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String mostrarPrincipal(Model model){
         
-        List<Pelicula> peliculas = getLista();
-        
-        
+        //List<Pelicula> peliculas = getLista();
+        List<Peliculas> peliculas = peliculasService.listaPeliculas();
         model.addAttribute("peliculas", peliculas);
         return "home";
     }
