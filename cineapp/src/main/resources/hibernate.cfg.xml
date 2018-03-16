@@ -47,5 +47,13 @@ Contributor(s):
     <property name="hibernate.connection.username">cine</property>
     <property name="hibernate.connection.password">cine</property>
     <property name="hibernate.show_sql">true</property>
+    <mapping resource="com/jesus/cineapp/pojos/Horarios.hbm.xml"/>
+    <mapping resource="com/jesus/cineapp/pojos/RelPeliculasHorarios.hbm.xml"/>
+    <mapping resource="com/jesus/cineapp/pojos/Detalles.hbm.xml"/>
+    <mapping resource="com/jesus/cineapp/pojos/Noticias.hbm.xml"/>
+    <mapping resource="com/jesus/cineapp/pojos/Perfil.hbm.xml"/>
+    <mapping resource="com/jesus/cineapp/pojos/Usuarios.hbm.xml"/>
+    <mapping resource="com/jesus/cineapp/pojos/Peliculas.hbm.xml"/>
+    <mapping resource="com/jesus/cineapp/pojos/Salas.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

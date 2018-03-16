@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15/03/2018 05:46:09 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.jesus.cineapp.pojos.Noticias" table="NOTICIAS" schema="CINE" optimistic-lock="version">
+        <id name="idNoticia" type="big_decimal">
+            <column name="ID_NOTICIA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="peliculas" class="com.jesus.cineapp.pojos.Peliculas" fetch="select">
+            <column name="ID_PELICULA" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="titulo" type="string">
+            <column name="TITULO" length="20" />
+        </property>
+        <property name="detalle" type="string">
+            <column name="DETALLE" length="20" />
+        </property>
+        <property name="estatus" type="string">
+            <column name="ESTATUS" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

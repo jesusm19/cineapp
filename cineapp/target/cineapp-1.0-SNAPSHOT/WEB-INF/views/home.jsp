@@ -44,7 +44,7 @@
                     <tbody>
                         <c:forEach items="${ peliculas }" var="pelicula">
                             <tr>
-                                <td>${ pelicula.id }</td>
+                                <td>${ pelicula.idPelicula }</td>
                                 <td>${ pelicula.titulo }</td>
                                 <td>${ pelicula.duracion } min.</td>
                                 <td>${ pelicula.clasificacion }</td>

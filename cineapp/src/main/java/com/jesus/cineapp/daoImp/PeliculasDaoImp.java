@@ -20,6 +20,7 @@ import javax.sql.DataSource;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -31,6 +32,15 @@ public class PeliculasDaoImp implements PeliculasDao{
     
 //    @PersistenceContext
 //    private EntityManager entityManager;
+    
+    private static SessionFactory sessionFactory;
+    
+    public PeliculasDaoImp(){
+        sessionFactory = new AnnotationConfiguration()
+                    .configure()
+                    .addResource("Peliculas.hbm.xml")
+                    .buildSessionFactory();
+    }
    
     
     @Override
@@ -45,14 +55,11 @@ public class PeliculasDaoImp implements PeliculasDao{
 //        }
 //        return null;
 
-        Session session = HibernateUtil.getSessionFactory().openSession();
-
- 
-
-        List<Peliculas> peliculas = (List<Peliculas>) session.createQuery("from Peliculas");
-
-
-
+        Session session = sessionFactory.openSession();
+        
+        List<Peliculas> peliculas = session.createQuery("from PELICULAS").list();
+        
+        
         return peliculas;
     }
 }

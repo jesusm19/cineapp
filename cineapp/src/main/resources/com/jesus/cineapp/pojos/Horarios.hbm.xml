@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15/03/2018 05:46:09 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.jesus.cineapp.pojos.Horarios" table="HORARIOS" schema="CINE" optimistic-lock="version">
+        <id name="idHorario" type="big_decimal">
+            <column name="ID_HORARIO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="salas" class="com.jesus.cineapp.pojos.Salas" fetch="select">
+            <column name="ID_SALA" precision="22" scale="0" />
+        </many-to-one>
+        <property name="fecha" type="date">
+            <column name="FECHA" length="7" />
+        </property>
+        <property name="hora" type="string">
+            <column name="HORA" length="20" />
+        </property>
+        <set name="relPeliculasHorarioses" table="REL_PELICULAS_HORARIOS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_HORARIO" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.jesus.cineapp.pojos.RelPeliculasHorarios" />
+        </set>
+    </class>
+</hibernate-mapping>

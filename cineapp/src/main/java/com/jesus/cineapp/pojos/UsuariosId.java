@@ -1,5 +1,5 @@
 package com.jesus.cineapp.pojos;
-// Generated 14/03/2018 12:15:52 PM by Hibernate Tools 4.3.1
+// Generated 15/03/2018 05:46:08 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;

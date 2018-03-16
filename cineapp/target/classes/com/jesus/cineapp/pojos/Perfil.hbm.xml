@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15/03/2018 05:46:09 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.jesus.cineapp.pojos.Perfil" table="PERFIL" schema="CINE" optimistic-lock="version">
+        <id name="idPerfil" type="big_decimal">
+            <column name="ID_PERFIL" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="20" />
+        </property>
+        <set name="usuarioses" table="USUARIOS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PERFIL" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.jesus.cineapp.pojos.Usuarios" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -5,12 +5,10 @@
  */
 package com.jesus.cineapp.hibernate;
 
+import org.hibernate.Session;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
-
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.metamodel.Metadata;
-import org.hibernate.metamodel.MetadataSources;
+import org.hibernate.cfg.Configuration;
 
 /**
  * Hibernate Utility class with a convenient method to get Session Factory
@@ -20,33 +18,27 @@ import org.hibernate.metamodel.MetadataSources;
  */
 public class HibernateUtil {
 
-     private static StandardServiceRegistry registry;
-  private static SessionFactory sessionFactory;
-
-  public static SessionFactory getSessionFactory() {
-    if (sessionFactory == null) {
-      try {
-        // Create registry
-        registry = new StandardServiceRegistryBuilder()
-            .configure()
-            .build();
-
-        // Create MetadataSources
-        MetadataSources sources = new MetadataSources(registry);
-
-        // Create Metadata
-        Metadata metadata = sources.getMetadataBuilder().build();
-
-        // Create SessionFactory
-        sessionFactory = metadata.getSessionFactoryBuilder().build();
-
-      } catch (Exception e) {
-        e.printStackTrace();
-        if (registry != null) {
-          StandardServiceRegistryBuilder.destroy(registry);
+    private static final SessionFactory sessionFactory;
+    
+    static {
+        try {
+            // Create the SessionFactory from standard (hibernate.cfg.xml) 
+            // config file.
+            sessionFactory = new AnnotationConfiguration()
+                    .configure()
+                    .addResource("hibernate.hfg.xml")
+                    .buildSessionFactory();
+//            Configuration cfg = new Configuration()
+//                .addResource("hibernate.hfg.xml");
+           
+        } catch (Throwable ex) {
+            // Log the exception. 
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
         }
-      }
     }
-    return sessionFactory;
-  }
+    
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15/03/2018 05:46:09 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.jesus.cineapp.pojos.Peliculas" table="PELICULAS" schema="CINE" optimistic-lock="version">
+        <id name="idPelicula" type="big_decimal">
+            <column name="ID_PELICULA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="titulo" type="string">
+            <column name="TITULO" length="20" />
+        </property>
+        <property name="genero" type="string">
+            <column name="GENERO" length="20" />
+        </property>
+        <property name="clasificacion" type="string">
+            <column name="CLASIFICACION" length="20" />
+        </property>
+        <property name="duracion" type="big_decimal">
+            <column name="DURACION" precision="22" scale="0" />
+        </property>
+        <property name="fechaEstreno" type="date">
+            <column name="FECHA_ESTRENO" length="7" />
+        </property>
+        <property name="estatus" type="string">
+            <column name="ESTATUS" length="20" />
+        </property>
+        <property name="imagen" type="string">
+            <column name="IMAGEN" length="20" />
+        </property>
+        <set name="detalleses" table="DETALLES" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PELICULA" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.jesus.cineapp.pojos.Detalles" />
+        </set>
+        <set name="relPeliculasHorarioses" table="REL_PELICULAS_HORARIOS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PELICULA" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.jesus.cineapp.pojos.RelPeliculasHorarios" />
+        </set>
+        <set name="noticiases" table="NOTICIAS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PELICULA" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.jesus.cineapp.pojos.Noticias" />
+        </set>
+    </class>
+</hibernate-mapping>
