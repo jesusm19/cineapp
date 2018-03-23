@@ -26,11 +26,7 @@ public class HibernateUtil {
             // config file.
             sessionFactory = new AnnotationConfiguration()
                     .configure()
-                    .addResource("hibernate.hfg.xml")
                     .buildSessionFactory();
-//            Configuration cfg = new Configuration()
-//                .addResource("hibernate.hfg.xml");
-           
         } catch (Throwable ex) {
             // Log the exception. 
             System.err.println("Initial SessionFactory creation failed." + ex);

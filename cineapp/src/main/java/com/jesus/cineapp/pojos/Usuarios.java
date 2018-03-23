@@ -1,7 +1,8 @@
 package com.jesus.cineapp.pojos;
-// Generated 15/03/2018 05:46:08 PM by Hibernate Tools 4.3.1
+// Generated 23/03/2018 04:13:46 PM by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Date;
 public class Usuarios  implements java.io.Serializable {
 
 
-     private UsuariosId id;
+     private BigDecimal idUsuario;
      private Perfil perfil;
      private String primerNombre;
      private String segundoNombre;
@@ -21,18 +22,17 @@ public class Usuarios  implements java.io.Serializable {
      private String email;
      private String estatus;
      private Date fechaRegistro;
-     private String fechaModificacion;
+     private Date fechaModificacion;
 
     public Usuarios() {
     }
 
 	
-    public Usuarios(UsuariosId id, Perfil perfil) {
-        this.id = id;
-        this.perfil = perfil;
+    public Usuarios(BigDecimal idUsuario) {
+        this.idUsuario = idUsuario;
     }
-    public Usuarios(UsuariosId id, Perfil perfil, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String usuario, String contrasenia, String email, String estatus, Date fechaRegistro, String fechaModificacion) {
-       this.id = id;
+    public Usuarios(BigDecimal idUsuario, Perfil perfil, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, String usuario, String contrasenia, String email, String estatus, Date fechaRegistro, Date fechaModificacion) {
+       this.idUsuario = idUsuario;
        this.perfil = perfil;
        this.primerNombre = primerNombre;
        this.segundoNombre = segundoNombre;
@@ -46,12 +46,12 @@ public class Usuarios  implements java.io.Serializable {
        this.fechaModificacion = fechaModificacion;
     }
    
-    public UsuariosId getId() {
-        return this.id;
+    public BigDecimal getIdUsuario() {
+        return this.idUsuario;
     }
     
-    public void setId(UsuariosId id) {
-        this.id = id;
+    public void setIdUsuario(BigDecimal idUsuario) {
+        this.idUsuario = idUsuario;
     }
     public Perfil getPerfil() {
         return this.perfil;
@@ -123,11 +123,11 @@ public class Usuarios  implements java.io.Serializable {
     public void setFechaRegistro(Date fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
-    public String getFechaModificacion() {
+    public Date getFechaModificacion() {
         return this.fechaModificacion;
     }
     
-    public void setFechaModificacion(String fechaModificacion) {
+    public void setFechaModificacion(Date fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
     }
 

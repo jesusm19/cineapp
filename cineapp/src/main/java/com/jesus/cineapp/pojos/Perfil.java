@@ -1,5 +1,5 @@
 package com.jesus.cineapp.pojos;
-// Generated 15/03/2018 05:46:08 PM by Hibernate Tools 4.3.1
+// Generated 23/03/2018 04:13:46 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -14,7 +14,7 @@ public class Perfil  implements java.io.Serializable {
 
      private BigDecimal idPerfil;
      private String descripcion;
-     private Set<Usuarios> usuarioses = new HashSet<Usuarios>(0);
+     private Set usuarioses = new HashSet(0);
 
     public Perfil() {
     }
@@ -23,7 +23,7 @@ public class Perfil  implements java.io.Serializable {
     public Perfil(BigDecimal idPerfil) {
         this.idPerfil = idPerfil;
     }
-    public Perfil(BigDecimal idPerfil, String descripcion, Set<Usuarios> usuarioses) {
+    public Perfil(BigDecimal idPerfil, String descripcion, Set usuarioses) {
        this.idPerfil = idPerfil;
        this.descripcion = descripcion;
        this.usuarioses = usuarioses;
@@ -43,11 +43,11 @@ public class Perfil  implements java.io.Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public Set<Usuarios> getUsuarioses() {
+    public Set getUsuarioses() {
         return this.usuarioses;
     }
     
-    public void setUsuarioses(Set<Usuarios> usuarioses) {
+    public void setUsuarioses(Set usuarioses) {
         this.usuarioses = usuarioses;
     }
 

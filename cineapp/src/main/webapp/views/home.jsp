@@ -49,7 +49,7 @@
                                 <td>${ pelicula.duracion } min.</td>
                                 <td>${ pelicula.clasificacion }</td>
                                 <td>${ pelicula.genero }</td>
-                                <td><img src="${urlPublic}/images/${pelicula.imagen}"></td>
+                                <td><img src="../img/${pelicula.imagen}"></td>
                                 <td><fmt:formatDate value="${pelicula.fechaEstreno}" pattern="dd/MM/yyyy"/></td>
                                 <td>
                                     

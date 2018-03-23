@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 15/03/2018 05:46:09 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 23/03/2018 04:13:46 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.jesus.cineapp.pojos.Detalles" table="DETALLES" schema="CINE" optimistic-lock="version">
+    <class name="com.jesus.cineapp.pojos.Detalles" table="DETALLES" schema="CINE">
         <id name="idDetalle" type="big_decimal">
             <column name="ID_DETALLE" precision="22" scale="0" />
-            <generator class="assigned" />
+            <generator class="assigned"></generator>
         </id>
         <many-to-one name="peliculas" class="com.jesus.cineapp.pojos.Peliculas" fetch="select">
             <column name="ID_PELICULA" precision="22" scale="0" />

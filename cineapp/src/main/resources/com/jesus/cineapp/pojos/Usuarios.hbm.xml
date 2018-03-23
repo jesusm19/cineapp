@@ -1,49 +1,44 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 15/03/2018 05:46:09 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/03/2018 04:13:46 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.jesus.cineapp.pojos.Usuarios" table="USUARIOS" schema="CINE" optimistic-lock="version">
-        <composite-id name="id" class="com.jesus.cineapp.pojos.UsuariosId">
-            <key-property name="idUsuario" type="big_decimal">
-                <column name="ID_USUARIO" precision="22" scale="0" />
-            </key-property>
-            <key-property name="idPerfil" type="big_decimal">
-                <column name="ID_PERFIL" precision="22" scale="0" />
-            </key-property>
-        </composite-id>
-        <many-to-one name="perfil" class="com.jesus.cineapp.pojos.Perfil" update="false" insert="false" fetch="select">
-            <column name="ID_PERFIL" precision="22" scale="0" not-null="true" />
-        </many-to-one>
-        <property name="primerNombre" type="string">
-            <column name="PRIMER_NOMBRE" length="20" />
-        </property>
-        <property name="segundoNombre" type="string">
-            <column name="SEGUNDO_NOMBRE" length="20" />
-        </property>
-        <property name="primerApellido" type="string">
-            <column name="PRIMER_APELLIDO" length="20" />
-        </property>
-        <property name="segundoApellido" type="string">
-            <column name="SEGUNDO_APELLIDO" length="20" />
-        </property>
-        <property name="usuario" type="string">
-            <column name="USUARIO" length="20" />
-        </property>
-        <property name="contrasenia" type="string">
-            <column name="CONTRASENIA" length="20" />
-        </property>
-        <property name="email" type="string">
-            <column name="EMAIL" length="20" />
-        </property>
-        <property name="estatus" type="string">
-            <column name="ESTATUS" length="20" />
-        </property>
-        <property name="fechaRegistro" type="date">
-            <column name="FECHA_REGISTRO" length="7" />
-        </property>
-        <property name="fechaModificacion" type="string">
-            <column name="FECHA_MODIFICACION" length="18" />
-        </property>
-    </class>
+  <class name="com.jesus.cineapp.pojos.Usuarios" optimistic-lock="version" schema="CINE" table="USUARIOS">
+    <id name="idUsuario" type="big_decimal">
+      <column name="ID_USUARIO" precision="22" scale="0"/>
+      <generator class="increment"/>
+    </id>
+    <many-to-one class="com.jesus.cineapp.pojos.Perfil" fetch="select" name="perfil">
+      <column name="ID_PERFIL" precision="22" scale="0"/>
+    </many-to-one>
+    <property name="primerNombre" type="string">
+      <column length="30" name="PRIMER_NOMBRE"/>
+    </property>
+    <property name="segundoNombre" type="string">
+      <column length="30" name="SEGUNDO_NOMBRE"/>
+    </property>
+    <property name="primerApellido" type="string">
+      <column length="30" name="PRIMER_APELLIDO"/>
+    </property>
+    <property name="segundoApellido" type="string">
+      <column length="30" name="SEGUNDO_APELLIDO"/>
+    </property>
+    <property name="usuario" type="string">
+      <column length="30" name="USUARIO"/>
+    </property>
+    <property name="contrasenia" type="string">
+      <column length="100" name="CONTRASENIA"/>
+    </property>
+    <property name="email" type="string">
+      <column length="50" name="EMAIL"/>
+    </property>
+    <property name="estatus" type="string">
+      <column length="20" name="ESTATUS"/>
+    </property>
+    <property name="fechaRegistro" type="date">
+      <column length="7" name="FECHA_REGISTRO"/>
+    </property>
+    <property name="fechaModificacion" type="date">
+      <column length="7" name="FECHA_MODIFICACION"/>
+    </property>
+  </class>
 </hibernate-mapping>

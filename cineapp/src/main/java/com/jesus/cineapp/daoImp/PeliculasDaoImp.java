@@ -8,19 +8,9 @@ package com.jesus.cineapp.daoImp;
 import com.jesus.cineapp.dao.PeliculasDao;
 import com.jesus.cineapp.hibernate.HibernateUtil;
 import com.jesus.cineapp.pojos.Peliculas;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
-import javax.management.Query;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.sql.DataSource;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -29,36 +19,28 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class PeliculasDaoImp implements PeliculasDao{
-    
-//    @PersistenceContext
-//    private EntityManager entityManager;
-    
+
     private static SessionFactory sessionFactory;
+    private Session session;
     
     public PeliculasDaoImp(){
-        sessionFactory = new AnnotationConfiguration()
-                    .configure()
-                    .addResource("Peliculas.hbm.xml")
-                    .buildSessionFactory();
+        sessionFactory = HibernateUtil.getSessionFactory();
     }
-   
+    
+    public void abrirSesion(){
+        session = sessionFactory.openSession();
+    }
+    
+    public void cerrarSesion(){
+        session.close();
+    }
     
     @Override
     public List<Peliculas> listaPeliculas(){
         
-//        try {
-//            List<Peliculas> peliculas= entityManager.createQuery("from Peliculas")
-//                .getResultList();
-//                    return peliculas;
-//        } catch (Exception e) {
-//            System.out.println("ERROR " + e);
-//        }
-//        return null;
-
-        Session session = sessionFactory.openSession();
-        
-        List<Peliculas> peliculas = session.createQuery("from PELICULAS").list();
-        
+        abrirSesion();
+        List<Peliculas> peliculas = session.createQuery("from Peliculas").list();
+        cerrarSesion();
         
         return peliculas;
     }

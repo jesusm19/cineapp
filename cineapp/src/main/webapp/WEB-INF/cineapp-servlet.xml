@@ -16,8 +16,18 @@ and open the template in the editor.
     <context:component-scan base-package="com.jesus.cineapp" />
     <context:annotation-config />
     <!--annotation-driven /-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views/" />
+    <bean id="principal" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+    
+    <bean id="registro" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/views/registroUsuario" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+    
+    <bean id="login" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/views/login" />
         <property name="suffix" value=".jsp" />
     </bean>
     

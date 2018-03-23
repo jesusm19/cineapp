@@ -1,5 +1,5 @@
 package com.jesus.cineapp.pojos;
-// Generated 15/03/2018 05:46:08 PM by Hibernate Tools 4.3.1
+// Generated 23/03/2018 04:13:46 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -21,9 +21,9 @@ public class Peliculas  implements java.io.Serializable {
      private Date fechaEstreno;
      private String estatus;
      private String imagen;
-     private Set<Detalles> detalleses = new HashSet<Detalles>(0);
-     private Set<RelPeliculasHorarios> relPeliculasHorarioses = new HashSet<RelPeliculasHorarios>(0);
-     private Set<Noticias> noticiases = new HashSet<Noticias>(0);
+     private Set detalleses = new HashSet(0);
+     private Set relPeliculasHorarioses = new HashSet(0);
+     private Set noticiases = new HashSet(0);
 
     public Peliculas() {
     }
@@ -32,7 +32,7 @@ public class Peliculas  implements java.io.Serializable {
     public Peliculas(BigDecimal idPelicula) {
         this.idPelicula = idPelicula;
     }
-    public Peliculas(BigDecimal idPelicula, String titulo, String genero, String clasificacion, BigDecimal duracion, Date fechaEstreno, String estatus, String imagen, Set<Detalles> detalleses, Set<RelPeliculasHorarios> relPeliculasHorarioses, Set<Noticias> noticiases) {
+    public Peliculas(BigDecimal idPelicula, String titulo, String genero, String clasificacion, BigDecimal duracion, Date fechaEstreno, String estatus, String imagen, Set detalleses, Set relPeliculasHorarioses, Set noticiases) {
        this.idPelicula = idPelicula;
        this.titulo = titulo;
        this.genero = genero;
@@ -102,25 +102,25 @@ public class Peliculas  implements java.io.Serializable {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-    public Set<Detalles> getDetalleses() {
+    public Set getDetalleses() {
         return this.detalleses;
     }
     
-    public void setDetalleses(Set<Detalles> detalleses) {
+    public void setDetalleses(Set detalleses) {
         this.detalleses = detalleses;
     }
-    public Set<RelPeliculasHorarios> getRelPeliculasHorarioses() {
+    public Set getRelPeliculasHorarioses() {
         return this.relPeliculasHorarioses;
     }
     
-    public void setRelPeliculasHorarioses(Set<RelPeliculasHorarios> relPeliculasHorarioses) {
+    public void setRelPeliculasHorarioses(Set relPeliculasHorarioses) {
         this.relPeliculasHorarioses = relPeliculasHorarioses;
     }
-    public Set<Noticias> getNoticiases() {
+    public Set getNoticiases() {
         return this.noticiases;
     }
     
-    public void setNoticiases(Set<Noticias> noticiases) {
+    public void setNoticiases(Set noticiases) {
         this.noticiases = noticiases;
     }
 

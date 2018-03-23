@@ -1,5 +1,5 @@
 package com.jesus.cineapp.pojos;
-// Generated 15/03/2018 05:46:08 PM by Hibernate Tools 4.3.1
+// Generated 23/03/2018 04:13:46 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -17,7 +17,7 @@ public class Horarios  implements java.io.Serializable {
      private Salas salas;
      private Date fecha;
      private String hora;
-     private Set<RelPeliculasHorarios> relPeliculasHorarioses = new HashSet<RelPeliculasHorarios>(0);
+     private Set relPeliculasHorarioses = new HashSet(0);
 
     public Horarios() {
     }
@@ -26,7 +26,7 @@ public class Horarios  implements java.io.Serializable {
     public Horarios(BigDecimal idHorario) {
         this.idHorario = idHorario;
     }
-    public Horarios(BigDecimal idHorario, Salas salas, Date fecha, String hora, Set<RelPeliculasHorarios> relPeliculasHorarioses) {
+    public Horarios(BigDecimal idHorario, Salas salas, Date fecha, String hora, Set relPeliculasHorarioses) {
        this.idHorario = idHorario;
        this.salas = salas;
        this.fecha = fecha;
@@ -62,11 +62,11 @@ public class Horarios  implements java.io.Serializable {
     public void setHora(String hora) {
         this.hora = hora;
     }
-    public Set<RelPeliculasHorarios> getRelPeliculasHorarioses() {
+    public Set getRelPeliculasHorarioses() {
         return this.relPeliculasHorarioses;
     }
     
-    public void setRelPeliculasHorarioses(Set<RelPeliculasHorarios> relPeliculasHorarioses) {
+    public void setRelPeliculasHorarioses(Set relPeliculasHorarioses) {
         this.relPeliculasHorarioses = relPeliculasHorarioses;
     }
 
