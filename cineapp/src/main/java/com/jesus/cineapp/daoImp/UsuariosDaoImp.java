@@ -12,6 +12,7 @@ import com.jesus.cineapp.pojos.Perfil;
 import com.jesus.cineapp.pojos.Usuarios;
 import java.util.Date;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -59,7 +60,6 @@ public class UsuariosDaoImp implements UsuariosDao{
             user.setEmail(usuario.getEmail());
             user.setEstatus("Activo");
             user.setFechaRegistro(new Date());
-            user.setFechaModificacion(new Date());
             
             session.save(user);
             return true;
@@ -79,16 +79,11 @@ public class UsuariosDaoImp implements UsuariosDao{
         try {
             abrirSesion();
             
-//            Usuarios usuariosPojo = 
-//                    (Usuarios) session.createQuery("from Usuarios u where u.email = :email")
-//                            .setParameter("email", usuario.getEmail())
-//                            .uniqueResult();
+            Usuarios usuariosPojo = 
+                    (Usuarios) session.createQuery("from Usuarios u where u.email = :email and u.estatus='Activo'")
+                            .setParameter("email", usuario.getEmail())
+                            .uniqueResult();
 
-            
-            List<Usuarios> list = session.createQuery("from Usuarios u where u.email = :email")
-                              .setParameter("email", usuario.getEmail()).list();
-            
-            Usuarios usuariosPojo = list.get(1);
             if(usuariosPojo != null){
                 if(usuariosPojo.getContrasenia().equals(usuario.getContrasenia())){
                     return usuariosPojo;
@@ -98,9 +93,28 @@ public class UsuariosDaoImp implements UsuariosDao{
         } catch (Exception e) {
             System.out.println("Error:::... " + e);
             cerrarSesion();
-        } finally{
+        } 
+        
+        return null;
+    }
+    
+    @Override
+    public Usuarios buscarUsuario(Usuario usuario){
+        try {
+            abrirSesion();
+            Usuarios usuariosPojo = 
+                    (Usuarios) session.createQuery("from Usuarios u where u.email = :email and u.estatus='Activo'")
+                            .setParameter("email", usuario.getEmail())
+                            .uniqueResult();
+
+            if(usuariosPojo != null){
+                return usuariosPojo;
+            }
+            
+        } catch (HibernateException e) {
+            System.out.println("Error:::... " + e);
             cerrarSesion();
-        }
+        } 
         
         return null;
     }

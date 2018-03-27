@@ -6,6 +6,7 @@
 package com.jesus.cineapp.controller;
 
 import com.jesus.cineapp.model.Usuario;
+import com.jesus.cineapp.pojos.Usuarios;
 import com.jesus.cineapp.service.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,13 +34,21 @@ public class UsuariosController {
     @RequestMapping(value="/registrarUsuarios", method=RequestMethod.POST)
     public String registrarUsuarios(@ModelAttribute("usuario") Usuario usuario, Model model){
         
-        boolean bandera = usuarioService.registrarUsuario(usuario);
+        Usuarios usuarioPojo = usuarioService.buscarUsuario(usuario);
         
-        if(bandera == true){
-            return "registroUsuario/exito";
+        if(usuarioPojo == null){
+            boolean bandera = usuarioService.registrarUsuario(usuario);
+        
+            if(bandera == true){
+                return "registroUsuario/exito";
+            } else{
+                model.addAttribute("error", "No se pudo registrar el usuario");
+                return "registroUsuario/registro_usuario";
+            }
         } else{
-            model.addAttribute("error", "No se pudo registrar el usuario");
-            return "registroUsuario/registro_usuario";
+            model.addAttribute("error", "El correo electronico ya ha sido registrado");
+                return "registroUsuario/registro_usuario";
         }
+        
     }
 }

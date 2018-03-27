@@ -32,4 +32,9 @@ public class UsuariosServiceImp implements UsuariosService{
     public Usuarios obtenerUsuario(Usuario usuario){
         return usuariosDao.obtenerUsuario(usuario);
     }
+    
+    @Override
+    public Usuarios buscarUsuario(Usuario usuario){
+        return usuariosDao.buscarUsuario(usuario);
+    }
 }

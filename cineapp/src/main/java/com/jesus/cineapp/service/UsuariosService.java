@@ -15,4 +15,5 @@ import com.jesus.cineapp.pojos.Usuarios;
 public interface UsuariosService {
     public Boolean registrarUsuario(Usuario usuario);
     public Usuarios obtenerUsuario(Usuario usuario);
+    public Usuarios buscarUsuario(Usuario usuario);
 }

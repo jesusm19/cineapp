@@ -70,7 +70,7 @@ public class HomeController {
     }
     
     @RequestMapping(value="/bienvenido", method=RequestMethod.POST)
-    public String bienvenido(@ModelAttribute("usuario") Usuario usuario, Model model){
+    public String bienvenido(@ModelAttribute("login") Usuario usuario, Model model){
         
         Usuarios usuarioPojo = usuarioService.obtenerUsuario(usuario);
         

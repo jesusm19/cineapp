@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <title>Cineapp - Registro</title>
+        <title>Cineapp - Login</title>
         <!--script src="/../js/validaFormulario.js"></script-->
     </head>
     <body>
@@ -20,7 +20,6 @@
         <div class="card">
             <div class="card-header">Entrar al sistema</div>
             <div class="card-body">
-                    ${ error }
                 <form:form modelAttribute="login" class="needs-validation" novalidate="" action="cineapp/bienvenido" method="post">
                     <div class="form-group">
                         <label for="inputEmail4">Correo electrónico:</label>
