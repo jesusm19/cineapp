@@ -118,4 +118,24 @@ public class UsuariosDaoImp implements UsuariosDao{
         
         return null;
     }
+    
+    @Override
+    public List<Usuarios> obtenerEmpleados(){
+        try {
+            abrirSesion();
+            
+            List<Usuarios> usuariosPojo = 
+                     session.createQuery("from Usuarios u where u.estatus='Activo'").list();
+
+            if(usuariosPojo != null){
+                    return usuariosPojo;
+            }  
+            
+        } catch (Exception e) {
+            System.out.println("Error:::... " + e);
+            cerrarSesion();
+        } 
+        
+        return null;
+    }
 }

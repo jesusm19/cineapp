@@ -9,6 +9,7 @@ import com.jesus.cineapp.dao.UsuariosDao;
 import com.jesus.cineapp.model.Usuario;
 import com.jesus.cineapp.pojos.Usuarios;
 import com.jesus.cineapp.service.UsuariosService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +37,10 @@ public class UsuariosServiceImp implements UsuariosService{
     @Override
     public Usuarios buscarUsuario(Usuario usuario){
         return usuariosDao.buscarUsuario(usuario);
+    }
+    
+    @Override
+    public List<Usuarios> obtenerEmpleados(){
+        return usuariosDao.obtenerEmpleados();
     }
 }

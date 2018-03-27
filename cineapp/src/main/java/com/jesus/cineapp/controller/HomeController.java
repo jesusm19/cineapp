@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
     
-    @Autowired
-    private PeliculasService peliculasService;
+//    @Autowired
+//    private PeliculasService peliculasService;
     
     @Autowired
     private UsuariosService usuarioService;
@@ -36,13 +36,13 @@ public class HomeController {
         return "home";
     }
     
-    @RequestMapping(value="/peliculas", method=RequestMethod.GET)
-    public String mostrarPrincipal(Model model){
-        
-        List<Peliculas> peliculas = peliculasService.listaPeliculas();
-        model.addAttribute("peliculas", peliculas);
-        return "home";
-    }
+//    @RequestMapping(value="/peliculas", method=RequestMethod.GET)
+//    public String mostrarPrincipal(Model model){
+//        
+//        List<Peliculas> peliculas = peliculasService.listaPeliculas();
+//        model.addAttribute("peliculas", peliculas);
+//        return "home";
+//    }
     
     @RequestMapping(value="/detail")
     public String mostrarDetalle(Model model){
@@ -75,8 +75,8 @@ public class HomeController {
         Usuarios usuarioPojo = usuarioService.obtenerUsuario(usuario);
         
         if(usuarioPojo != null){
-            model.addAttribute("usuario", usuarioPojo.getUsuario());
-            return "bienvenido";
+            model.addAttribute("nombre", usuarioPojo.getPrimerNombre());
+            return "admin";
         } else{
             model.addAttribute("error", "Usuario o Contraseña incorrectos");
             return "login/login";
