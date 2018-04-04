@@ -6,6 +6,7 @@
 package com.jesus.cineapp.dao;
 
 import com.jesus.cineapp.pojos.Peliculas;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -14,4 +15,5 @@ import java.util.List;
  */
 public interface PeliculasDao {
     public List<Peliculas> listaPeliculas();
+    public Peliculas obtenerPeliculaById(BigDecimal idPelicula);
 }

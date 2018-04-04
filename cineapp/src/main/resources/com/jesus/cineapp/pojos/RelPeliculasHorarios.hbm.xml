@@ -6,7 +6,7 @@
     <class name="com.jesus.cineapp.pojos.RelPeliculasHorarios" table="REL_PELICULAS_HORARIOS" schema="CINE">
         <id name="idRelPeliculasHorarios" type="big_decimal">
             <column name="ID_REL_PELICULAS_HORARIOS" precision="22" scale="0" />
-            <generator class="assigned"></generator>
+            <generator class="increment"></generator>
         </id>
         <many-to-one name="horarios" class="com.jesus.cineapp.pojos.Horarios" fetch="select">
             <column name="ID_HORARIO" precision="22" scale="0" />

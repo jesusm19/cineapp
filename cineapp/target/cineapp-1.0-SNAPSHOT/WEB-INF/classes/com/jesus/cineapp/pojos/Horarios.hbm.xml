@@ -6,7 +6,7 @@
     <class name="com.jesus.cineapp.pojos.Horarios" table="HORARIOS" schema="CINE">
         <id name="idHorario" type="big_decimal">
             <column name="ID_HORARIO" precision="22" scale="0" />
-            <generator class="assigned"></generator>
+            <generator class="increment"></generator>
         </id>
         <many-to-one name="salas" class="com.jesus.cineapp.pojos.Salas" fetch="select">
             <column name="ID_SALA" precision="22" scale="0" />

@@ -8,7 +8,9 @@ package com.jesus.cineapp.daoImp;
 import com.jesus.cineapp.dao.PeliculasDao;
 import com.jesus.cineapp.hibernate.HibernateUtil;
 import com.jesus.cineapp.pojos.Peliculas;
+import java.math.BigDecimal;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -29,9 +31,11 @@ public class PeliculasDaoImp implements PeliculasDao{
     
     public void abrirSesion(){
         session = sessionFactory.openSession();
+        session.getTransaction().begin();
     }
     
     public void cerrarSesion(){
+        session.getTransaction().commit();
         session.close();
     }
     
@@ -43,5 +47,25 @@ public class PeliculasDaoImp implements PeliculasDao{
         cerrarSesion();
         
         return peliculas;
+    }
+    
+    @Override
+    public Peliculas obtenerPeliculaById(BigDecimal idPelicula){
+        try {
+            abrirSesion();
+        
+            Peliculas pelicula = (Peliculas) session.createQuery(
+                    "from Peliculas p where p.idPelicula = :idpelicula")
+                    .setParameter("idpelicula", idPelicula)
+                    .uniqueResult();
+        
+            return pelicula;
+        } catch (HibernateException e) {
+            System.out.println("Exception:::.. " + e);
+            cerrarSesion();
+            return null;
+        } finally{
+            cerrarSesion();
+        }
     }
 }
