@@ -6,6 +6,7 @@
 package com.jesus.cineapp.controller;
 
 import com.jesus.cineapp.model.Horario;
+import com.jesus.cineapp.model.VHorariosPeliculas;
 import com.jesus.cineapp.pojos.Horarios;
 import com.jesus.cineapp.pojos.Peliculas;
 import com.jesus.cineapp.pojos.Salas;
@@ -39,7 +40,7 @@ public class HorariosController {
     @RequestMapping(value="/horarios", method=RequestMethod.GET)
     public String mostrarPrincipal(Model model){
         
-        List<Horarios> horarios = horariosService.obtenerHorarios();
+        List<VHorariosPeliculas> horarios = horariosService.obtenerHorarios();
         model.addAttribute("horarios", horarios);
         return "horarios/horarios";
     }

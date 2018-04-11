@@ -6,6 +6,7 @@
 package com.jesus.cineapp.service;
 
 import com.jesus.cineapp.model.Horario;
+import com.jesus.cineapp.model.VHorariosPeliculas;
 import com.jesus.cineapp.pojos.Horarios;
 import java.math.BigDecimal;
 import java.util.List;
@@ -16,6 +17,6 @@ import java.util.List;
  */
 public interface HorariosService {
     public Boolean guardarHorario(Horario horario);
-    public List<Horarios> obtenerHorarios();
+    public List<VHorariosPeliculas> obtenerHorarios();
     public void guardaRelacionHoraPelicula(BigDecimal idPelicula);
 }

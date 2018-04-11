@@ -7,6 +7,7 @@ package com.jesus.cineapp.serviceImp;
 
 import com.jesus.cineapp.dao.HorariosDao;
 import com.jesus.cineapp.model.Horario;
+import com.jesus.cineapp.model.VHorariosPeliculas;
 import com.jesus.cineapp.pojos.Horarios;
 import com.jesus.cineapp.service.HorariosService;
 import java.math.BigDecimal;
@@ -30,7 +31,7 @@ public class HorariosServiceImp implements HorariosService{
     }
     
     @Override
-    public List<Horarios> obtenerHorarios(){
+    public List<VHorariosPeliculas> obtenerHorarios(){
         return horariosDao.obtenerHorarios();
     }
     

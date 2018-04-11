@@ -1,20 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 23/03/2018 04:13:46 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9/04/2018 04:30:01 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class name="com.jesus.cineapp.pojos.Perfil" optimistic-lock="version" schema="CINE" table="PERFIL">
-    <id name="idPerfil" type="big_decimal">
-      <column name="ID_PERFIL" precision="22" scale="0"/>
-      <generator class="assigned"/>
-    </id>
-    <property name="descripcion" type="string">
-      <column length="20" name="DESCRIPCION"/>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="usuarioses" table="USUARIOS">
-      <key>
-        <column name="ID_PERFIL" precision="22" scale="0"/>
-      </key>
-      <one-to-many class="com.jesus.cineapp.pojos.Usuarios"/>
-    </set>
-  </class>
+    <class name="com.jesus.cineapp.pojos.Perfil" table="PERFIL" schema="CINE">
+        <id name="idPerfil" type="big_decimal">
+            <column name="ID_PERFIL" precision="22" scale="0" />
+            <generator class="assigned"></generator>
+        </id>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="20" />
+        </property>
+        <set name="usuarioses" table="USUARIOS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PERFIL" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.jesus.cineapp.pojos.Usuarios" />
+        </set>
+    </class>
 </hibernate-mapping>

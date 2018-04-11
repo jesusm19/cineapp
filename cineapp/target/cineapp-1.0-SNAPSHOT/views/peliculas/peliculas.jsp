@@ -14,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Bienvenido a cineapp</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
         <spring:url value="/resources" var="urlPublic"></spring:url>
     </head>
     <body>
@@ -66,6 +66,7 @@
                             <th>Imágen</th>
                             <th>Fecha de Estreno</th>
                             <th>Estatus</th>
+                            <th>Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -89,6 +90,10 @@
                                         </c:otherwise>
                                     </c:choose>
                                     
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit"><span><i class="fas fa-pencil-alt fa-lg"></i></span></a> 
+                                    <a href="#" onclick="return confirm(&quot;¿Estas seguro?&quot;)" class="btn btn-danger btn-sm" role="button" title="Eliminar"><span><i class="far fa-trash-alt fa-lg"></i></span></a>
                                 </td>
                             </tr>
                         </c:forEach>
