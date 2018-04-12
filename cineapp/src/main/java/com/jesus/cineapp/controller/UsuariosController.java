@@ -6,8 +6,10 @@
 package com.jesus.cineapp.controller;
 
 import com.jesus.cineapp.model.Usuario;
+import com.jesus.cineapp.pojos.Perfil;
 import com.jesus.cineapp.pojos.Usuarios;
 import com.jesus.cineapp.service.UsuariosService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,5 +52,15 @@ public class UsuariosController {
                 return "registroUsuario/registro_usuario";
         }
         
+    }
+    
+    @RequestMapping(value="/empleados/create", method = RequestMethod.GET)
+    public String crearEMpleado(Model model){
+        model.addAttribute("usuario", new Usuario()); 
+        List<Perfil> perfil = usuarioService.obtenerPerfiles();
+        model.addAttribute("perfiles", perfil);
+        
+        
+        return "registroUsuario/registro_usuario";
     }
 }

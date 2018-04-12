@@ -5,6 +5,8 @@
  */
 package com.jesus.cineapp.model;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author negocios_digitales
@@ -17,7 +19,16 @@ public class Usuario {
      private String usuario;
      private String contrasenia;
      private String email;
+     private BigDecimal idPerfil;
 
+    public BigDecimal getIdPerfil() {
+        return idPerfil;
+    }
+
+    public void setIdPerfil(BigDecimal idPerfil) {
+        this.idPerfil = idPerfil;
+    } 
+     
     public String getPrimerNombre() {
         return primerNombre;
     }

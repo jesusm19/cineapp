@@ -138,4 +138,24 @@ public class UsuariosDaoImp implements UsuariosDao{
         
         return null;
     }
+    
+    @Override
+    public List<Perfil> obtenerPerfiles(){
+        try {
+            abrirSesion();
+            
+            List<Perfil> perfiles = session.createQuery("from Perfil").list();
+
+            if(perfiles != null){
+                    return perfiles;
+            } else{
+                return null;
+            } 
+            
+        } catch (HibernateException e) {
+            System.out.println("Error:::... " + e);
+            cerrarSesion();
+            return null;
+        } 
+    }
 }

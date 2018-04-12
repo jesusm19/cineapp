@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="form"
  uri="http://www.springframework.org/tags/form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,6 +17,36 @@
         <!--script src="/../js/validaFormulario.js"></script-->
     </head>
     <body>
+        <!--   Menu  -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+            <a class="navbar-brand" href="#">CineApp | Administración</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="inicio">Inicio<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="empleados">Empleados <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="peliculas">Peliculas <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="horarios">Horarios <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="noticias">Noticias <span class="sr-only">(current)</span></a>
+                    </li>                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="salir">Salir</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Fin menu -->
         ${ error }
         <div class="card">
             <div class="card-header">Registro</div>
@@ -52,6 +83,15 @@
                         </div>
                     </div>
                     
+                    <div class="form-group">
+                        <label for="perfilUsuario">Perfil de usuario:</label>
+                        <form:select class="form-control" id="idPerfil" path="idPerfil">
+                            <c:forEach items="${ perfiles }" var="perfiles">
+                                <form:option value="${ perfiles.idPerfil }">${ perfiles.descripcion }</form:option>
+                                </c:forEach>
+                        </form:select>
+                    </div>    
+                        
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Correo electrónico:</label>
@@ -85,6 +125,18 @@
 
             </div>
         </div>
+        
+        
+        <!-- FOOTER -->
+            <footer>
+                <p class="pull-right">
+                </p>
+                <p>
+                    © 2018 My CineSite, Inc. | Aplicación desarrollada con Spring 5.0 | Autor: Jesús Martín García Ramírez | · <a href="#">Privacy</a>
+                    · <a href="#">Terms</a>
+                </p>
+            </footer>
+        
         <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {

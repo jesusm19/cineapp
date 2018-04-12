@@ -19,4 +19,5 @@ public interface HorariosService {
     public Boolean guardarHorario(Horario horario);
     public List<VHorariosPeliculas> obtenerHorarios();
     public void guardaRelacionHoraPelicula(BigDecimal idPelicula);
+    public Boolean eliminarHorario(BigDecimal id);
 }

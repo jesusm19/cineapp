@@ -39,4 +39,9 @@ public class HorariosServiceImp implements HorariosService{
     public void guardaRelacionHoraPelicula(BigDecimal idPelicula){
         horariosDao.guardaRelacionHoraPelicula(idPelicula);
     }
+    
+    @Override
+    public Boolean eliminarHorario(BigDecimal id){
+        return horariosDao.eliminarHorario(id);
+    }
 }

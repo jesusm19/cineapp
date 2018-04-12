@@ -7,6 +7,7 @@ package com.jesus.cineapp.serviceImp;
 
 import com.jesus.cineapp.dao.UsuariosDao;
 import com.jesus.cineapp.model.Usuario;
+import com.jesus.cineapp.pojos.Perfil;
 import com.jesus.cineapp.pojos.Usuarios;
 import com.jesus.cineapp.service.UsuariosService;
 import java.util.List;
@@ -42,5 +43,10 @@ public class UsuariosServiceImp implements UsuariosService{
     @Override
     public List<Usuarios> obtenerEmpleados(){
         return usuariosDao.obtenerEmpleados();
+    }
+    
+    @Override
+    public List<Perfil> obtenerPerfiles(){
+        return usuariosDao.obtenerPerfiles();
     }
 }

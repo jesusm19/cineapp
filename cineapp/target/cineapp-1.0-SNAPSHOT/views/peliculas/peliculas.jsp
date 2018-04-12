@@ -52,7 +52,7 @@
         
         <div class="card">
             <div class="card-header">Lista de películas &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="#" class="btn btn-success" role="button" title="nuevoEmpleado">Agregar película</a>
+                <a href="create" class="btn btn-success" role="button" title="nuevoEmpleado">Agregar película</a>
             </div>
             <div class="card-body">
                 <table class="table table-striped table-bordered table-hover">

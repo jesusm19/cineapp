@@ -49,7 +49,7 @@
         
         <div class="card">
             <div class="card-header">Lista de empleados &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="#" class="btn btn-success" role="button" title="nuevoEmpleado">Agregar empleado</a>
+                <a href="empleados/create" class="btn btn-success" role="button" title="nuevoEmpleado">Agregar empleado</a>
             </div>
             
             <div class="card-body">

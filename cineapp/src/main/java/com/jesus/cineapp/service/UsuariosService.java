@@ -6,6 +6,7 @@
 package com.jesus.cineapp.service;
 
 import com.jesus.cineapp.model.Usuario;
+import com.jesus.cineapp.pojos.Perfil;
 import com.jesus.cineapp.pojos.Usuarios;
 import java.util.List;
 
@@ -18,4 +19,5 @@ public interface UsuariosService {
     public Usuarios obtenerUsuario(Usuario usuario);
     public Usuarios buscarUsuario(Usuario usuario);
     public List<Usuarios> obtenerEmpleados();
+    public List<Perfil> obtenerPerfiles();
 }

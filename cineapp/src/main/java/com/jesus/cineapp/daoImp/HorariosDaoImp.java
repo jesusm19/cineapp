@@ -143,4 +143,25 @@ public class HorariosDaoImp implements HorariosDao{
         }
         
     }
+    
+    @Override
+    public Boolean eliminarHorario(BigDecimal id){
+        try {
+            abrirSesion();
+            Horarios horarios = (Horarios) session.createQuery
+                    ("FROM Horarios h where h.idHorario = :idHorario")
+                    .setParameter("idHorario", id)
+                    .uniqueResult();
+
+            session.delete(horarios);
+            return true;
+        } catch (HibernateException e) {
+            System.out.println("Exception:::.. " + e);
+            cerrarSesion();
+            return false;
+        } finally{
+            cerrarSesion();
+        }
+
+    }
 }

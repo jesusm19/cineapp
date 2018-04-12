@@ -7,19 +7,21 @@ package com.jesus.cineapp.controller;
 
 import com.jesus.cineapp.model.Horario;
 import com.jesus.cineapp.model.VHorariosPeliculas;
-import com.jesus.cineapp.pojos.Horarios;
 import com.jesus.cineapp.pojos.Peliculas;
 import com.jesus.cineapp.pojos.Salas;
 import com.jesus.cineapp.service.HorariosService;
 import com.jesus.cineapp.service.PeliculasService;
 import com.jesus.cineapp.service.SalasService;
+import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -67,6 +69,16 @@ public class HorariosController {
         } else{
             model.addAttribute("error", "No se pudo agregar horario");
             return "horarios/crearHorario";
+        }
+    }
+    
+    @RequestMapping(value="delete/{id}", method= RequestMethod.GET)
+    public String eliminarHorario(@PathVariable BigDecimal id){
+        Boolean bandera = horariosService.eliminarHorario(id);
+        if(bandera == true){
+            return "horarios/horarios"; 
+        } else{
+            return "peliculas/peliculas";
         }
     }
 }
