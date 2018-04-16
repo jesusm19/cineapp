@@ -9,11 +9,13 @@ import com.jesus.cineapp.model.Usuario;
 import com.jesus.cineapp.pojos.Perfil;
 import com.jesus.cineapp.pojos.Usuarios;
 import com.jesus.cineapp.service.UsuariosService;
+import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -62,5 +64,35 @@ public class UsuariosController {
         
         
         return "registroUsuario/registro_usuario";
+    }
+    
+    @RequestMapping(value="/empleados/save", method= RequestMethod.POST)
+    public String registrarEmpleado(@ModelAttribute("usuario") Usuario usuario, Model model){
+         Usuarios usuarioPojo = usuarioService.buscarUsuario(usuario);
+        
+        if(usuarioPojo == null){
+            boolean bandera = usuarioService.registrarUsuario(usuario);
+        
+            if(bandera == true){
+                return "registroUsuario/empleados";
+            } else{
+                model.addAttribute("error", "No se pudo registrar el usuario");
+                return "registroUsuario/registro_usuario";
+            }
+        } else{
+            model.addAttribute("error", "El correo electronico ya ha sido registrado");
+                return "registroUsuario/registro_usuario";
+        }
+    }
+    
+    @RequestMapping(value="empleados/delete/{id}", method= RequestMethod.GET)
+    public String eliminarEmpleado(@PathVariable BigDecimal id){
+        
+        Boolean bandera = usuarioService.eliminarEmpleado(id);
+        if(bandera == true){
+            return "registroUsuario/empleados";
+        } else{
+            return "registroUsuario/registro_usuario";
+        }
     }
 }

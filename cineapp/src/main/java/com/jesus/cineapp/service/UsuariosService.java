@@ -8,6 +8,7 @@ package com.jesus.cineapp.service;
 import com.jesus.cineapp.model.Usuario;
 import com.jesus.cineapp.pojos.Perfil;
 import com.jesus.cineapp.pojos.Usuarios;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -20,4 +21,5 @@ public interface UsuariosService {
     public Usuarios buscarUsuario(Usuario usuario);
     public List<Usuarios> obtenerEmpleados();
     public List<Perfil> obtenerPerfiles();
+    public Boolean eliminarEmpleado(BigDecimal id);
 }

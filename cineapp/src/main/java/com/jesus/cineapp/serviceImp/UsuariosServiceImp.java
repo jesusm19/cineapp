@@ -10,6 +10,7 @@ import com.jesus.cineapp.model.Usuario;
 import com.jesus.cineapp.pojos.Perfil;
 import com.jesus.cineapp.pojos.Usuarios;
 import com.jesus.cineapp.service.UsuariosService;
+import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,5 +49,10 @@ public class UsuariosServiceImp implements UsuariosService{
     @Override
     public List<Perfil> obtenerPerfiles(){
         return usuariosDao.obtenerPerfiles();
+    }
+    
+    @Override
+    public Boolean eliminarEmpleado(BigDecimal id){
+        return usuariosDao.eliminarEmpleado(id);
     }
 }

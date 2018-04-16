@@ -51,8 +51,8 @@
         <div class="card">
             <div class="card-header">Registro</div>
             <div class="card-body">
-
-                <form:form modelAttribute="usuario" class="needs-validation" novalidate="" action="registrarUsuarios" method="post">
+                
+                <form:form modelAttribute="usuario" class="needs-validation" novalidate="" action="save" method="post">
                     
                     <div class="form-row">
                         <div class="form-group col-md-6">

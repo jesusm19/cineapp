@@ -10,6 +10,7 @@ import com.jesus.cineapp.hibernate.HibernateUtil;
 import com.jesus.cineapp.model.Usuario;
 import com.jesus.cineapp.pojos.Perfil;
 import com.jesus.cineapp.pojos.Usuarios;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -47,7 +48,9 @@ public class UsuariosDaoImp implements UsuariosDao{
         try {
             abrirSesion();
 
-            Perfil perfil =  (Perfil) session.createQuery("from Perfil p where p.idPerfil = 2").uniqueResult();
+            Perfil perfil =  (Perfil) session.createQuery("from Perfil p where p.idPerfil = :idPerfil")
+                    .setParameter("idPerfil", usuario.getIdPerfil())
+                    .uniqueResult();
             
             Usuarios user = new Usuarios();
             user.setPerfil(perfil);
@@ -125,7 +128,7 @@ public class UsuariosDaoImp implements UsuariosDao{
             abrirSesion();
             
             List<Usuarios> usuariosPojo = 
-                     session.createQuery("from Usuarios u where u.estatus='Activo'").list();
+                     session.createQuery("from Usuarios u where u.estatus='Activo'ORDER BY u.idUsuario asc").list();
 
             if(usuariosPojo != null){
                     return usuariosPojo;
@@ -157,5 +160,25 @@ public class UsuariosDaoImp implements UsuariosDao{
             cerrarSesion();
             return null;
         } 
+    }
+    
+    @Override
+    public Boolean eliminarEmpleado(BigDecimal id){
+        try {
+            abrirSesion();
+            Usuarios usuario = (Usuarios) session.createQuery
+                    ("FROM Usuarios u where u.idUsuario = :idUsuario")
+                    .setParameter("idUsuario", id)
+                    .uniqueResult();
+
+            session.delete(usuario);
+            return true;
+        } catch (HibernateException e) {
+            System.out.println("Exception:::.. " + e);
+            cerrarSesion();
+            return false;
+        } finally{
+            cerrarSesion();
+        }
     }
 }
