@@ -55,4 +55,14 @@ public class UsuariosServiceImp implements UsuariosService{
     public Boolean eliminarEmpleado(BigDecimal id){
         return usuariosDao.eliminarEmpleado(id);
     }
+    
+    @Override
+    public Usuarios obtenerEmpleadoPorId(BigDecimal id){
+        return usuariosDao.obtenerEmpleadoPorId(id);
+    }
+    
+    @Override
+    public Boolean actualizarEmpleado(Usuario usuario){
+        return usuariosDao.actualizarEmpleado(usuario);
+    }
 }

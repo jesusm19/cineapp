@@ -95,4 +95,31 @@ public class UsuariosController {
             return "registroUsuario/registro_usuario";
         }
     }
+    
+    @RequestMapping(value="empleados/update/{id}", method= RequestMethod.GET)
+    public String actualizarEmpleado(@PathVariable BigDecimal id, Model model){
+        Usuarios usuario = usuarioService.obtenerEmpleadoPorId(id);
+        if(usuario != null){
+            model.addAttribute("usuario", new Usuario());
+            model.addAttribute("usuarioMod", usuario);
+            List<Perfil> perfil = usuarioService.obtenerPerfiles();
+            model.addAttribute("perfiles", perfil);
+            return "registroUsuario/registro_usuario"; 
+        } else{
+            return "registroUsuario/empleados";
+        }
+    }
+    
+    @RequestMapping(value="/empleados/update", method= RequestMethod.POST)
+    public String actualizarEmpleadoUp(@ModelAttribute("usuario") Usuario usuario, Model model){
+         
+        boolean bandera = usuarioService.actualizarEmpleado(usuario);
+
+        if (bandera == true) {
+            return "registroUsuario/empleados";
+        } else {
+            model.addAttribute("error", "No se pudo registrar el usuario");
+            return "registroUsuario/registro_usuario";
+        }
+    }
 }

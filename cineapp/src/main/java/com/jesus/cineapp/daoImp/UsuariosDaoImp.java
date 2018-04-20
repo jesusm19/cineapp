@@ -181,4 +181,54 @@ public class UsuariosDaoImp implements UsuariosDao{
             cerrarSesion();
         }
     }
+    
+    @Override
+    public Usuarios obtenerEmpleadoPorId(BigDecimal id){
+        try {
+            abrirSesion();
+            Usuarios usuario = (Usuarios) session.createQuery
+                    ("FROM Usuarios u where u.idUsuario = :idUsuario")
+                    .setParameter("idUsuario", id)
+                    .uniqueResult();
+            
+            return usuario;
+        } catch (HibernateException e) {
+            System.out.println("Exception:::.. " + e);
+            return null;
+        } finally{
+            cerrarSesion();
+        }
+    }
+    
+    @Override
+    public Boolean actualizarEmpleado(Usuario usu){
+        try {
+            abrirSesion();
+            Usuarios usuario = (Usuarios) session.createQuery
+                    ("FROM Usuarios u where u.idUsuario = :idUsuario")
+                    .setParameter("idUsuario", usu.getIdUsuario())
+                    .uniqueResult();
+            
+            Perfil perfil =  (Perfil) session.createQuery("from Perfil p where p.idPerfil = :idPerfil")
+                    .setParameter("idPerfil", usu.getIdPerfil())
+                    .uniqueResult();
+            
+            usuario.setPerfil(perfil);
+            usuario.setPrimerNombre(usu.getPrimerNombre());
+            usuario.setSegundoNombre(usu.getSegundoNombre());
+            usuario.setPrimerApellido(usu.getPrimerApellido());
+            usuario.setSegundoApellido(usu.getSegundoApellido());
+            usuario.setContrasenia(usu.getContrasenia());
+            usuario.setFechaModificacion(new Date());
+
+            session.saveOrUpdate(usuario);
+            return true;
+        } catch (HibernateException e) {
+            System.out.println("Exception:::.. " + e);
+            cerrarSesion();
+            return false;
+        } finally{
+            cerrarSesion();
+        }
+    }
 }

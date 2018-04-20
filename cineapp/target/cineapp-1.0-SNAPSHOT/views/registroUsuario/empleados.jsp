@@ -86,7 +86,7 @@
                                     
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit"><span><i class="fas fa-pencil-alt fa-lg"></i></span></a> 
+                                    <a href="empleados/update/${ empleados.idUsuario }" class="btn btn-success btn-sm" role="button" title="Edit"><span><i class="fas fa-pencil-alt fa-lg"></i></span></a> 
                                     <a href="empleados/delete/${ empleados.idUsuario }" onclick="return confirm(&quot;¿Estas seguro?&quot;)" class="btn btn-danger btn-sm" role="button" title="Eliminar"><span><i class="far fa-trash-alt fa-lg"></i></span></a>
                                 </td>
                             </tr>

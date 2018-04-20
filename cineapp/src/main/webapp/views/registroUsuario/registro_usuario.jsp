@@ -51,76 +51,152 @@
         <div class="card">
             <div class="card-header">Registro</div>
             <div class="card-body">
+                <c:choose>
+                    <c:when test="${usuarioMod.idUsuario != null}">
+                        <form:form modelAttribute="usuario" class="needs-validation" novalidate="" action="/cineapp/empleados/update" method="post">
+                            <form:input class="form-control" id="idUsuario" path="idUsuario" required="required" value="${usuarioMod.idUsuario}" type="hidden"/>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="primerNombre">Primer nombre:</label>
+                                    <form:input type="text" class="form-control" id="primerNombre" path="primerNombre" required="required" value="${usuarioMod.primerNombre}"/>
+                                    <div class="invalid-feedback">
+                                        Campo obligatorio
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="segundoNombre">Segundo nombre:</label>
+                                    <form:input type="text" class="form-control" id="segundoNombre" path="segundoNombre" value="${usuarioMod.segundoNombre}"/>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="primerApellido">Primer apellido:</label>
+                                    <form:input type="text" class="form-control" id="primerApellido" path="primerApellido" required="required" value="${usuarioMod.primerApellido}"/>
+                                    <div class="invalid-feedback">
+                                        Campo obligatorio
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="segundoApellido">Segundo apellido:</label>
+                                    <form:input type="text" class="form-control" id="segundoApellido" path="segundoApellido" value="${usuarioMod.segundoApellido}"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="perfilUsuario">Perfil de usuario:</label>
+                                <form:select class="form-control" id="idPerfil" path="idPerfil">
+                                    <c:forEach items="${ perfiles }" var="perfiles">
+                                        <form:option value="${ perfiles.idPerfil }">${ perfiles.descripcion }</form:option>
+                                    </c:forEach>
+                                </form:select>
+                            </div>    
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Correo electrónico:</label>
+                                    <form:input type="email" class="form-control" id="email" path="email" placeholder="example@example.com" required="required" value="${usuarioMod.email}" disabled="true" />
+                                    <div class="invalid-feedback">
+                                        Campo obligatorio
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Contraseña:</label>
+                                    <form:input type="password" class="form-control" id="contrasenia" path="contrasenia" placeholder="Contraseña" required="required" value="${usuarioMod.contrasenia}"/>
+                                    <div class="invalid-feedback">
+                                        Campo obligatorio
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="usuario">Usuario:</label>
+                                <form:input type="text" class="form-control" id="usuario" path="usuario" required="required" value="${usuarioMod.usuario}" disabled="true"/>
+                                <div class="invalid-feedback">
+                                    Campo obligatorio
+                                </div>
+                            </div>
+
+                            <form:button type="submit" class="btn btn-primary">Guardar</form:button>
+
+                                <!--/form-->
+                        </form:form>
+                    </c:when>    
+                    <c:otherwise>
+                        <form:form modelAttribute="usuario" class="needs-validation" novalidate="" action="/cineapp/empleados/save" method="post">
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="primerNombre">Primer nombre:</label>
+                                    <form:input type="text" class="form-control" id="primerNombre" path="primerNombre" required="required"/>
+                                    <div class="invalid-feedback">
+                                        Campo obligatorio
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="segundoNombre">Segundo nombre:</label>
+                                    <form:input type="text" class="form-control" id="segundoNombre" path="segundoNombre"/>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="primerApellido">Primer apellido:</label>
+                                    <form:input type="text" class="form-control" id="primerApellido" path="primerApellido" required="required"/>
+                                    <div class="invalid-feedback">
+                                        Campo obligatorio
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="segundoApellido">Segundo apellido:</label>
+                                    <form:input type="text" class="form-control" id="segundoApellido" path="segundoApellido"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="perfilUsuario">Perfil de usuario:</label>
+                                <form:select class="form-control" id="idPerfil" path="idPerfil">
+                                    <c:forEach items="${ perfiles }" var="perfiles">
+                                        <form:option value="${ perfiles.idPerfil }">${ perfiles.descripcion }</form:option>
+                                    </c:forEach>
+                                </form:select>
+                            </div>    
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Correo electrónico:</label>
+                                    <form:input type="email" class="form-control" id="email" path="email" placeholder="example@example.com" required="required"/>
+                                    <div class="invalid-feedback">
+                                        Campo obligatorio
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Contraseña:</label>
+                                    <form:input type="password" class="form-control" id="contrasenia" path="contrasenia" placeholder="Contraseña" required="required"/>
+                                    <div class="invalid-feedback">
+                                        Campo obligatorio
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="usuario">Usuario:</label>
+                                <form:input type="text" class="form-control" id="usuario" path="usuario" required="required"/>
+                                <div class="invalid-feedback">
+                                    Campo obligatorio
+                                </div>
+                            </div>
+
+                            <form:button type="submit" class="btn btn-primary">Regístrarse</form:button>
+
+                                <!--/form-->
+                        </form:form>
+                        <br />
+                    </c:otherwise>
+                </c:choose>
                 
-                <form:form modelAttribute="usuario" class="needs-validation" novalidate="" action="save" method="post">
-                    
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="primerNombre">Primer nombre:</label>
-                            <form:input type="text" class="form-control" id="primerNombre" path="primerNombre" required="required"/>
-                            <div class="invalid-feedback">
-                                Campo obligatorio
-                            </div>
-                        </div>
-                        
-                        <div class="form-group col-md-6">
-                            <label for="segundoNombre">Segundo nombre:</label>
-                            <form:input type="text" class="form-control" id="segundoNombre" path="segundoNombre"/>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="primerApellido">Primer apellido:</label>
-                            <form:input type="text" class="form-control" id="primerApellido" path="primerApellido" required="required"/>
-                            <div class="invalid-feedback">
-                                Campo obligatorio
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="segundoApellido">Segundo apellido:</label>
-                            <form:input type="text" class="form-control" id="segundoApellido" path="segundoApellido"/>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="perfilUsuario">Perfil de usuario:</label>
-                        <form:select class="form-control" id="idPerfil" path="idPerfil">
-                            <c:forEach items="${ perfiles }" var="perfiles">
-                                <form:option value="${ perfiles.idPerfil }">${ perfiles.descripcion }</form:option>
-                                </c:forEach>
-                        </form:select>
-                    </div>    
-                        
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Correo electrónico:</label>
-                            <form:input type="email" class="form-control" id="email" path="email" placeholder="example@example.com" required="required"/>
-                            <div class="invalid-feedback">
-                                Campo obligatorio
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">Contraseña:</label>
-                            <form:input type="password" class="form-control" id="contrasenia" path="contrasenia" placeholder="Contraseña" required="required" />
-                            <div class="invalid-feedback">
-                                Campo obligatorio
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="usuario">Usuario:</label>
-                        <form:input type="text" class="form-control" id="usuario" path="usuario" required="required" />
-                        <div class="invalid-feedback">
-                            Campo obligatorio
-                        </div>
-                    </div>
-                    
-                    <form:button type="submit" class="btn btn-primary">Regístrarse</form:button>
-                    
-                <!--/form-->
-                </form:form>
 
 
             </div>

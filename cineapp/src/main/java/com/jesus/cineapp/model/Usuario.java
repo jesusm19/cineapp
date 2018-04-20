@@ -20,7 +20,18 @@ public class Usuario {
      private String contrasenia;
      private String email;
      private BigDecimal idPerfil;
+     private BigDecimal idUsuario;
 
+    public BigDecimal getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(BigDecimal idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+     
+     
     public BigDecimal getIdPerfil() {
         return idPerfil;
     }

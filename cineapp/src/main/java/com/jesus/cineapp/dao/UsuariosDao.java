@@ -22,4 +22,6 @@ public interface UsuariosDao {
     public List<Usuarios> obtenerEmpleados();
     public List<Perfil> obtenerPerfiles();
     public Boolean eliminarEmpleado(BigDecimal id);
+    public Usuarios obtenerEmpleadoPorId(BigDecimal id);
+    public Boolean actualizarEmpleado(Usuario usuario);
 }
